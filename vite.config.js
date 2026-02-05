@@ -3,4 +3,7 @@ import typegpuPlugin from 'unplugin-typegpu/vite';
 
 export default defineConfig({
   plugins: [typegpuPlugin()],
+    build: {
+    target: 'esnext'
+  }
 });

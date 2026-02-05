@@ -65,8 +65,6 @@ if (body.firstChild) {
   body.appendChild(controlsPanel);
 }
 
-// Execute example
-// @ts-expect-error
 const example = await import('./src/index.ts');
 
 // Create example controls
@@ -77,6 +75,7 @@ for (const controls of Object.values(example)) {
 
   for (
     const [label, params] of Object.entries(
+      //@ts-ignore
       controls as Record<string, ExampleControlParam>,
     )
   ) {
