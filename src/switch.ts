@@ -54,16 +54,16 @@ export class SwitchBehavior {
   async init() {
     const [backgroundResponse, switchOnResponse, switchOffResponse] =
       await Promise.all([
-        fetch('myassets/drag-noise.ogg'),
-        fetch('myassets/switch-on.ogg'),
-        fetch('myassets/switch-off.ogg'),
+        fetch('/myassets/drag-noise.ogg'),
+        fetch('/myassets/switch-on.ogg'),
+        fetch('/myassets/switch-off.ogg'),
       ]);
 
     this.#squelchBuffers = await Promise.all(
       Array.from(
         { length: 6 },
         (_, idx) =>
-          fetch(`myassets/squelch${idx + 1}.wav`)
+          fetch(`/myassets/squelch${idx + 1}.wav`)
             .then((res) => res.arrayBuffer())
             .then((buffer) => this.#audioContext.decodeAudioData(buffer)),
       ),
