@@ -54,16 +54,16 @@ export class SwitchBehavior {
   async init() {
     const [backgroundResponse, switchOnResponse, switchOffResponse] =
       await Promise.all([
-        fetch('https://docs.swmansion.com/TypeGPU/assets/jelly-switch/drag-noise.ogg'),
-        fetch('https://docs.swmansion.com/TypeGPU/assets/jelly-switch/switch-on.ogg'),
-        fetch('https://docs.swmansion.com/TypeGPU/assets/jelly-switch/switch-off.ogg'),
+        fetch('myassets/drag-noise.ogg'),
+        fetch('myassets/switch-on.ogg'),
+        fetch('myassets/switch-off.ogg'),
       ]);
 
     this.#squelchBuffers = await Promise.all(
       Array.from(
         { length: 6 },
         (_, idx) =>
-          fetch(`https://docs.swmansion.com/TypeGPU/assets/jelly-switch/squelch${idx + 1}.wav`)
+          fetch(`myassets/squelch${idx + 1}.wav`)
             .then((res) => res.arrayBuffer())
             .then((buffer) => this.#audioContext.decodeAudioData(buffer)),
       ),
